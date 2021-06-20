@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Students Data
+{% endblock %}
+
+{% block content %}
+
+    <h1>Students Data</h1>
+    <br>
+    <!--Add a Student Data-->
+    <br>
+    <a class="btn btn-info" href="addStudentData" role="button">Add Student Data</a>
+    <a class="btn btn-info" href="importStudentData" role="button">Import Student Data</a>
+    <br><br><br>
+
+    {% if allStudent %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">PRN</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Address</th>
+                <th scope="col">Admission Year</th>
+                <th scope="col">Category</th>
+                <th scope="col">Fees Paid</th>
+                <th scope="col">Branch</th>
+                <th scope="col">College Shift</th>
+                <th scope="col">CET Score</th>
+                <th scope="col">Admission Type</th>
+            </tr>
+            </thead>
+            {% for i in allStudent %}
+                <tbody>
+                <tr>
+                    <td scope="row">{{ i.name }}</td>
+                    <td>{{ i.PRN }}</td>
+                    <td>{{ i.gender }}</td>
+                    <td>{{ i.address }}</td>
+                    <td>{{ i.academic_year }}</td>
+                    <td>{{ i.category }}</td>
+                    <td>{{ i.fees_paid }}</td>
+                    <td>{{ i.branch }}</td>
+                    <td>{{ i.clg_shift }}</td>
+                    <td>{{ i.CET_Score }}</td>
+                    <td>{{ i.admission_type }}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#popUpModal{{ i.PRN }}">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+
+                <!-- Modal -->
+                <div class="modal fade" id="popUpModal{{ i.PRN }}" tabindex="-1" role="dialog" aria-labelledby="popUpModalTitle" aria-hidden="true">
+                    <div class=" modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="popUpModalTitle">Delete Confirmation</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h6>Are you sure, you want to delete.</h6>
+                            </div>
+                            <div class="modal-footer">
+{#                                <a href="teacherHome"><button type="button" class="btn btn-secondary" >No, thanks</button></a>#}
+                                <a href="studentDataDelete/{{i.PRN}}"><button type="button" class="btn btn-danger" >Delete</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </table>
+        <br>
+    {% endif %}
+
+
+
+{% endblock %}

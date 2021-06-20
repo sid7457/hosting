@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Add Research Paper
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+    <h1>Add Research Paper</h1>
+    <br>
+    <!--Add a Paper-->
+    <form class="form-horizontal"  role="form" action="addResearchPapers" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="doi_no">
+                DOI No:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="doi_no" type="text" name="doi" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="type_of_publication">
+                Type of Publication:
+            </label>
+            <div class="col-sm-10">
+                <select class="form-select" id="type_of_publication" name="type_of_publication" required>
+                    <option value="International Journal">International Journal</option>
+                    <option value="International Conference">International Conference</option>
+                    <option value="International Proceedings">International Proceedings</option>
+                    <option value="IEEE International Conference">IEEE International Conference</option>
+                    <option value="National Conference">National Conference</option>
+                    <option value="National Proceeding">National Proceeding</option>
+                    <option value="Book Chapter">Book Chapter</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="details_of_paper">
+                Details of Paper:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="details_of_paper" type="text" name="details_of_paper" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="author_name">
+                Authors Name:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="author_name" type="text" name="author_name" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="startDate">
+                Publication Date:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="startDate" type="date" name="publication_date" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="department">
+                Department:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="department" type="text" name="department" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="area_of_research">
+                Area of Research:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="area_of_research" type="text" name="area_of_research" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="publication_details">
+                Journal or Publication Details:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="publication_details" type="text" name="publication_details" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="noOfAuthor">
+                No of Author:
+            </label>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="noOfAuthor" id="noOfAuthor" value="1" onclick="disable()" required>
+                    <label class="form-check-label" for="noOfAuthor">
+                        One
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="noOfAuthor" id="noOfAuthor" value="2" onclick="enableTwo()">
+                    <label class="form-check-label" for="noOfAuthor">
+                        Two
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="noOfAuthor" id="noOfAuthor" value="3" onclick="enableThree()">
+                    <label class="form-check-label" for="noOfAuthor">
+                        Three
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="username2" hidden>
+            <label class="control-label col-sm-3" for="user2">
+                User Name of Author Two:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="user2" type="text" name="user2">
+            </div>
+        </div>
+        <div class="form-group" id="username3" hidden>
+            <label class="control-label col-sm-3" for="user3">
+                User Name of Author Three:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="user3" type="text" name="user3">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label class="control-label" for="ddlYears">
+                    Academic Year:
+                </label>
+                <select name="academic_year" id="ddlYears"></select>
+                -
+                <select name="toYear" id="ddlYears2"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </form>
+    <br>
+
+    {% for message in messages %}
+        <script>alert("{{ message }}")</script>
+    {% endfor %}
+
+    <script>
+        function enableTwo() {
+            document.getElementById("username2").hidden = false;
+        }
+        function enableThree() {
+            document.getElementById("username2").hidden = false;
+            document.getElementById("username3").hidden = false;
+        }
+        function disable() {
+            document.getElementById("username2").hidden = true;
+            document.getElementById("username3").hidden = true;
+        }
+    </script>
+    <script src="{% static '/js/DateValidation.js' %}"></script>
+    <script src="{% static '/js/year.js' %}"></script>
+    <script src="{% static '/js/year2.js' %}"></script>
+{% endblock %}

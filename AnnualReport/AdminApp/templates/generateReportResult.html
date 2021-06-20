@@ -1,0 +1,1951 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Generate Report
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+    <style>
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-right: auto;
+            margin-left: auto;
+            text-align: center;
+        }
+        th, td{
+            padding: 5px;
+        }
+    </style>
+    <br>
+    <div style="text-align: center">
+        <h1>WCE Annual Report {{ fromYear }}-{{ toYear }}</h1>
+        <div class="form-group" style="margin-left: 80%">
+            <div class="col-sm-10">
+                <a href="../../GeneratePdf/{{ fromYear }}/{{ toYear }}" target="_blank"><button type="button" class="btn btn-primary">Download Report PDF File</button></a>
+            </div>
+        </div>
+        <br>
+
+        <!-- Student Data -->
+        <h4 style="color: blue; text-align: left">Admissions Details of AY {{ fromYear }}-{{ toYear }}:</h4>
+        <table>
+            <tr style="background-color: #FFAA71;">
+                <th colspan="12">F.Y.B.Tech {{ fromYear }}-{{ toYear }}, Admission Regulating Authority, Admission DATA</th>
+            </tr>
+            <tr style="background-color: #FFAA71;">
+                <th>Branch</th>
+                <th>Shift 1</th>
+                <th>Shift 2</th>
+                <th>Establishment Year</th>
+                <th>Sanctioned Intake</th>
+                <th>CAP Quota</th>
+                <th>Surrendered Quota</th>
+                <th>Institutional / Management Quota</th>
+                <th>NRI / PIO / OCI / CIWGC</th>
+                <th>TFWS / EWS / Schemes / PMSSS</th>
+                <th>J&K and GOI</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>Civil Engineering</td>
+                <td>Y</td>
+                <td>N</td>
+                <td>1947</td>
+                <td>60</td>
+                <td>58</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>11</td>
+                <td>1</td>
+                <td>72</td>
+            </tr>
+            <tr>
+                <td>Computer Science and Engineering</td>
+                <td>Y</td>
+                <td>N</td>
+                <td>1986</td>
+                <td>90</td>
+                <td>88</td>
+                <td>0</td>
+                <td>2</td>
+                <td>2</td>
+                <td>17</td>
+                <td>1</td>
+                <td>110</td>
+            </tr>
+            <tr>
+                <td>Information Technology</td>
+                <td>Y</td>
+                <td>N</td>
+                <td>2001</td>
+                <td>60</td>
+                <td>59</td>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+                <td>10</td>
+                <td>1</td>
+                <td>71</td>
+            </tr>
+            <tr>
+                <td>Electrical Engineering</td>
+                <td>Y</td>
+                <td>N</td>
+                <td>1955</td>
+                <td>60</td>
+                <td>60</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>10</td>
+                <td>0</td>
+                <td>70</td>
+            </tr>
+            <tr>
+                <td>Mechanical Engineering</td>
+                <td>Y</td>
+                <td>N</td>
+                <td>1955</td>
+                <td>60</td>
+                <td>58</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>10</td>
+                <td>1</td>
+                <td>71</td>
+            </tr>
+            <tr>
+                <td>Electronics Engineering</td>
+                <td>Y</td>
+                <td>N</td>
+                <td>1986</td>
+                <td>60</td>
+                <td>60</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>10</td>
+                <td>0</td>
+                <td>70</td>
+            </tr>
+            <tr style="background-color: #FDDB3A;">
+                <td colspan="4">Total</td>
+                <td>390</td>
+                <td>383</td>
+                <td>0</td>
+                <td>7</td>
+                <td>2</td>
+                <td>68</td>
+                <td>4</td>
+                <td>464</td>
+            </tr>
+        </table>
+        <br>
+
+        <table>
+            <tr style="background-color: #F7D6BF;">
+                <th colspan="12">F.Y.B.Tech {{ fromYear }}-{{ toYear }}, CET %tile Score: JKSSS, GULF & NETU without CET {{ fromYear }}</th>
+            </tr>
+            <tr style="background-color: #F7D6BF;">
+                <th>Branch</th>
+                <th>>95.00</th>
+                <th>>90.00 & <=95.00</th>
+                <th>>85.00 & <=90.00</th>
+                <th>>80.00 & <=85.00</th>
+                <th>>70.00 & <=80.00</th>
+                <th><=70</th>
+                <th>Total</th>
+                <th>JKSSS</th>
+                <th>JK Migrant</th>
+                <th>NEUT</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>Computer Science And Engineering</td>
+                <td>{{BTechStudentDataCSEGTE96}}</td>
+                <td>{{BTechStudentDataCSEGTE91To95}}</td>
+                <td>{{BTechStudentDataCSEGTE86To90}}</td>
+                <td>{{BTechStudentDataCSEGTE81To85}}</td>
+                <td>{{BTechStudentDataCSEGTE71To80}}</td>
+                <td>{{BTechStudentDataCSEGTELTE70}}</td>
+                <td>{{BTechStudentDataCSETotal1}}</td>
+                <td>{{BTechStudentDataCSEJKSS}}</td>
+                <td>{{BTechStudentDataCSEJKMigrant}}</td>
+                <td>{{BTechStudentDataCSENEUT}}</td>
+                <td>{{BTechStudentDataCSETotal2}}</td>
+            </tr>
+            <tr>
+                <td>Civil Engineering</td>
+                <td>{{BTechStudentDataCVGTE96}}</td>
+                <td>{{BTechStudentDataCVGTE91To95}}</td>
+                <td>{{BTechStudentDataCVGTE86To90}}</td>
+                <td>{{BTechStudentDataCVGTE81To85}}</td>
+                <td>{{BTechStudentDataCVGTE71To80}}</td>
+                <td>{{BTechStudentDataCVGTELTE70}}</td>
+                <td>{{BTechStudentDataCVTotal1}}</td>
+                <td>{{BTechStudentDataCVJKSS}}</td>
+                <td>{{BTechStudentDataCVJKMigrant}}</td>
+                <td>{{BTechStudentDataCVNEUT}}</td>
+                <td>{{BTechStudentDataCVTotal2}}</td>
+            </tr>
+            <tr>
+                <td>Information Technology Engineering</td>
+                <td>{{BTechStudentDataITGTE96}}</td>
+                <td>{{BTechStudentDataITGTE91To95}}</td>
+                <td>{{BTechStudentDataITGTE86To90}}</td>
+                <td>{{BTechStudentDataITGTE81To85}}</td>
+                <td>{{BTechStudentDataITGTE71To80}}</td>
+                <td>{{BTechStudentDataITGTELTE70}}</td>
+                <td>{{BTechStudentDataITTotal1}}</td>
+                <td>{{BTechStudentDataITJKSS}}</td>
+                <td>{{BTechStudentDataITJKMigrant}}</td>
+                <td>{{BTechStudentDataITNEUT}}</td>
+                <td>{{BTechStudentDataITTotal2}}</td>
+            </tr>
+            <tr>
+                <td>Mechanical Engineering</td>
+                <td>{{BTechStudentDataMEGTE96}}</td>
+                <td>{{BTechStudentDataMEGTE91To95}}</td>
+                <td>{{BTechStudentDataMEGTE86To90}}</td>
+                <td>{{BTechStudentDataMEGTE81To85}}</td>
+                <td>{{BTechStudentDataMEGTE71To80}}</td>
+                <td>{{BTechStudentDataMEGTELTE70}}</td>
+                <td>{{BTechStudentDataMETotal1}}</td>
+                <td>{{BTechStudentDataMEJKSS}}</td>
+                <td>{{BTechStudentDataMEJKMigrant}}</td>
+                <td>{{BTechStudentDataMENEUT}}</td>
+                <td>{{BTechStudentDataMETotal2}}</td>
+            </tr>
+            <tr>
+                <td>Electrical Engineering</td>
+                <td>{{BTechStudentDataELGTE96}}</td>
+                <td>{{BTechStudentDataELGTE91To95}}</td>
+                <td>{{BTechStudentDataELGTE86To90}}</td>
+                <td>{{BTechStudentDataELGTE81To85}}</td>
+                <td>{{BTechStudentDataELGTE71To80}}</td>
+                <td>{{BTechStudentDataELGTELTE70}}</td>
+                <td>{{BTechStudentDataELTotal1}}</td>
+                <td>{{BTechStudentDataELJKSS}}</td>
+                <td>{{BTechStudentDataELJKMigrant}}</td>
+                <td>{{BTechStudentDataELNEUT}}</td>
+                <td>{{BTechStudentDataELTotal2}}</td>
+            </tr>
+            <tr>
+                <td>Electronics Engineering</td>
+                <td>{{BTechStudentDataETNGTE96}}</td>
+                <td>{{BTechStudentDataETNGTE91To95}}</td>
+                <td>{{BTechStudentDataETNGTE86To90}}</td>
+                <td>{{BTechStudentDataETNGTE81To85}}</td>
+                <td>{{BTechStudentDataETNGTE71To80}}</td>
+                <td>{{BTechStudentDataETNGTELTE70}}</td>
+                <td>{{BTechStudentDataETNTotal1}}</td>
+                <td>{{BTechStudentDataETNJKSS}}</td>
+                <td>{{BTechStudentDataETNJKMigrant}}</td>
+                <td>{{BTechStudentDataETNNEUT}}</td>
+                <td>{{BTechStudentDataETNTotal2}}</td>
+            </tr>
+        </table>
+        <br>
+
+        <table>
+            <tr style="background-color: #CEDEBD;">
+                <th colspan="13">F.Y.B.Tech {{ fromYear }}-{{ toYear }}, Admitted DATA</th>
+            </tr>
+            <tr style="background-color: #CEDEBD;">
+                <th>Branch</th>
+                <th>Sanctioned</th>
+                <th>CAP Seats</th>
+                <th>WHMT Trust</th>
+                <th>DD Trust</th>
+                <th>EWS</th>
+                <th>TFWS</th>
+                <th>J&K1</th>
+                <th>J&K2</th>
+                <th>NRI / PIO / OCI / CIWGC</th>
+                <th>PMSSS / JKSSS</th>
+                <th>NEUT / GOI</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>Civil Engineering</td>
+                <td>60</td>
+                <td>{{BTechStudentDataCVCapSeats}}</td>
+                <td>{{BTechStudentDataCVWhmtTrust}}</td>
+                <td>{{BTechStudentDataCVDdTrust}}</td>
+                <td>{{BTechStudentDataCVEws}}</td>
+                <td>{{BTechStudentDataCVTfws}}</td>
+                <td>{{BTechStudentDataCVJnK1}}</td>
+                <td>{{BTechStudentDataCVJnK2}}</td>
+                <td>{{BTechStudentDataCVNri}}</td>
+                <td>{{BTechStudentDataCVPmsss}}</td>
+                <td>{{BTechStudentDataCVNeut}}</td>
+                <td>{{BTechStudentDataCVCatTotal}}</td>
+            </tr>
+            <tr>
+                <td>Computer Science And Engineering</td>
+                <td>90</td>
+                <td>{{BTechStudentDataCSECapSeats}}</td>
+                <td>{{BTechStudentDataCSEWhmtTrust}}</td>
+                <td>{{BTechStudentDataCSEDdTrust}}</td>
+                <td>{{BTechStudentDataCSEEws}}</td>
+                <td>{{BTechStudentDataCSETfws}}</td>
+                <td>{{BTechStudentDataCSEJnK1}}</td>
+                <td>{{BTechStudentDataCSEJnK2}}</td>
+                <td>{{BTechStudentDataCSENri}}</td>
+                <td>{{BTechStudentDataCSEPmsss}}</td>
+                <td>{{BTechStudentDataCSENeut}}</td>
+                <td>{{BTechStudentDataCSECatTotal}}</td>
+            </tr>
+            <tr>
+                <td>Information Technology Engineering</td>
+                <td>60</td>
+                <td>{{BTechStudentDataITCapSeats}}</td>
+                <td>{{BTechStudentDataITWhmtTrust}}</td>
+                <td>{{BTechStudentDataITDdTrust}}</td>
+                <td>{{BTechStudentDataITEws}}</td>
+                <td>{{BTechStudentDataITTfws}}</td>
+                <td>{{BTechStudentDataITJnK1}}</td>
+                <td>{{BTechStudentDataITJnK2}}</td>
+                <td>{{BTechStudentDataITNri}}</td>
+                <td>{{BTechStudentDataITPmsss}}</td>
+                <td>{{BTechStudentDataITNeut}}</td>
+                <td>{{BTechStudentDataITCatTotal}}</td>
+            </tr>
+            <tr>
+                <td>Electrical Engineering</td>
+                <td>60</td>
+                <td>{{BTechStudentDataELCapSeats}}</td>
+                <td>{{BTechStudentDataELWhmtTrust}}</td>
+                <td>{{BTechStudentDataELDdTrust}}</td>
+                <td>{{BTechStudentDataELEws}}</td>
+                <td>{{BTechStudentDataELTfws}}</td>
+                <td>{{BTechStudentDataELJnK1}}</td>
+                <td>{{BTechStudentDataELJnK2}}</td>
+                <td>{{BTechStudentDataELNri}}</td>
+                <td>{{BTechStudentDataELPmsss}}</td>
+                <td>{{BTechStudentDataELNeut}}</td>
+                <td>{{BTechStudentDataELCatTotal}}</td>
+            </tr>
+            <tr>
+                <td>Mechanical Engineering</td>
+                <td>60</td>
+                <td>{{BTechStudentDataMECapSeats}}</td>
+                <td>{{BTechStudentDataMEWhmtTrust}}</td>
+                <td>{{BTechStudentDataMEDdTrust}}</td>
+                <td>{{BTechStudentDataMEEws}}</td>
+                <td>{{BTechStudentDataMETfws}}</td>
+                <td>{{BTechStudentDataMEJnK1}}</td>
+                <td>{{BTechStudentDataMEJnK2}}</td>
+                <td>{{BTechStudentDataMENri}}</td>
+                <td>{{BTechStudentDataMEPmsss}}</td>
+                <td>{{BTechStudentDataMENeut}}</td>
+                <td>{{BTechStudentDataMECatTotal}}</td>
+            </tr>
+            <tr>
+                <td>Electronics Engineering</td>
+                <td>60</td>
+                <td>{{BTechStudentDataETNCapSeats}}</td>
+                <td>{{BTechStudentDataETNWhmtTrust}}</td>
+                <td>{{BTechStudentDataETNDdTrust}}</td>
+                <td>{{BTechStudentDataETNEws}}</td>
+                <td>{{BTechStudentDataETNTfws}}</td>
+                <td>{{BTechStudentDataETNJnK1}}</td>
+                <td>{{BTechStudentDataETNJnK2}}</td>
+                <td>{{BTechStudentDataETNNri}}</td>
+                <td>{{BTechStudentDataETNPmsss}}</td>
+                <td>{{BTechStudentDataETNNeut}}</td>
+                <td>{{BTechStudentDataETNCatTotal}}</td>
+            </tr>
+            <tr style="background-color: #FDDB3A;">
+                <td>Total</td>
+                <td>390</td>
+                <td>{{BTechStudentDataTotalCapSeats}}</td>
+                <td>{{BTechStudentDataTotalWhmtTrust}}</td>
+                <td>{{BTechStudentDataTotalDdTrust}}</td>
+                <td>{{BTechStudentDataTotalEws}}</td>
+                <td>{{BTechStudentDataTotalTfws}}</td>
+                <td>{{BTechStudentDataTotalJnK1}}</td>
+                <td>{{BTechStudentDataTotalJnK2}}</td>
+                <td>{{BTechStudentDataTotalNri}}</td>
+                <td>{{BTechStudentDataTotalPmsss}}</td>
+                <td>{{BTechStudentDataTotalNeut}}</td>
+                <td>{{BTechStudentDataTotalCatTotal}}</td>
+            </tr>
+        </table>
+        <br>
+
+        <table>
+            <tr style="background-color: #CBEAED;">
+                <th colspan="3">F.Y.B.Tech {{ fromYear }}-{{ toYear }}, Highest Lowest CET%</th>
+            </tr>
+            <tr style="background-color: #CBEAED;">
+                <th>Branch</th>
+                <th>Highest</th>
+                <th>Lowest</th>
+            </tr>
+            <tr>
+                <td>Civil Engineering</td>
+                <td>{{ BTechStudentDataCVHighestPer }}</td>
+                <td>{{ BTechStudentDataCVLowestPer }}</td>
+            </tr>
+            <tr>
+                <td>Computer Science And Engineering</td>
+                <td>{{ BTechStudentDataCSEHighestPer }}</td>
+                <td>{{ BTechStudentDataCSELowestPer }}</td>
+            </tr>
+            <tr>
+                <td>Information Technology</td>
+                <td>{{ BTechStudentDataITHighestPer }}</td>
+                <td>{{ BTechStudentDataITLowestPer }}</td>
+            </tr>
+            <tr>
+                <td>Electrical Engineering</td>
+                <td>{{ BTechStudentDataELHighestPer }}</td>
+                <td>{{ BTechStudentDataELLowestPer }}</td>
+            </tr>
+            <tr>
+                <td>Mechanical Engineering</td>
+                <td>{{ BTechStudentDataMEHighestPer }}</td>
+                <td>{{ BTechStudentDataMELowestPer }}</td>
+            </tr>
+            <tr>
+                <td>Electronics Engineering</td>
+                <td>{{ BTechStudentDataETNHighestPer }}</td>
+                <td>{{ BTechStudentDataETNLowestPer }}</td>
+            </tr>
+        </table>
+        <br>
+
+        <table>
+            <tr style="background-color: #F8BD7F;">
+                <th colspan="4">F.Y.B.Tech {{ fromYear }}-{{ toYear }}, No. of Male, Female Admited</th>
+            </tr>
+            <tr style="background-color: #F8BD7F;">
+                <th>Branch</th>
+                <th>Male</th>
+                <th>Female</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>Civil Engineering</td>
+                <td>{{ BTechStudentDataCVMale }}</td>
+                <td>{{ BTechStudentDataCVFemale }}</td>
+                <td>{{ CVTotalMF }}</td>
+            </tr>
+            <tr>
+                <td>Computer Science And Engineering</td>
+                <td>{{ BTechStudentDataCSEMale }}</td>
+                <td>{{ BTechStudentDataCSEFemale }}</td>
+                <td>{{ CSETotalMF }}</td>
+            </tr>
+            <tr>
+                <td>Information Technology</td>
+                <td>{{ BTechStudentDataITMale }}</td>
+                <td>{{ BTechStudentDataITFemale }}</td>
+                <td>{{ ITTotalMF }}</td>
+            </tr>
+            <tr>
+                <td>Electrical Engineering</td>
+                <td>{{ BTechStudentDataELMale }}</td>
+                <td>{{ BTechStudentDataELFemale }}</td>
+                <td>{{ ELTotalMF }}</td>
+            </tr>
+            <tr>
+                <td>Mechanical Engineering</td>
+                <td>{{ BTechStudentDataMEMale }}</td>
+                <td>{{ BTechStudentDataMEFemale }}</td>
+                <td>{{ METotalMF }}</td>
+            </tr>
+            <tr>
+                <td>Electronics Engineering</td>
+                <td>{{ BTechStudentDataETNMale }}</td>
+                <td>{{ BTechStudentDataETNFemale }}</td>
+                <td>{{ ETNTotalMF }}</td>
+            </tr>
+            <tr style="background-color: #FDDB3A;">
+                <td>Total</td>
+                <td>{{ TotalM }}</td>
+                <td>{{ TotalF }}</td>
+                <td>{{ TotalMF }}</td>
+            </tr>
+        </table>
+        <br>
+
+        <!-- Research Paper -->
+        <h4 style="color: blue;text-align: left">Individual and Collaborative Research Publications and Citations and Ph.D. Guided
+            Research Publications</h4>
+
+
+        <table>
+            <tr style="background-color: #A37EBA;">
+                <th>Department</th>
+                <th>No. of Papers</th>
+                <th>Books</th>
+                <th>Patents</th>
+            </tr>
+            <tr>
+                <td>Civil</td>
+                <td>{{ countRPCV }}</td>
+                <td>{{ countBookPCV }}</td>
+                <td>{{ countPatentsCV }}</td>
+            </tr>
+            <tr>
+                <td>Mechanical</td>
+                <td>{{ countRPME }}</td>
+                <td>{{ countBookPME }}</td>
+                <td>{{ countPatentsME }}</td>
+            </tr>
+            <tr>
+                <td>Electrical</td>
+                <td>{{ countRPEL }}</td>
+                <td>{{ countBookPEL }}</td>
+                <td>{{ countPatentsEL }}</td>
+            </tr>
+            <tr>
+                <td>Electronics</td>
+                <td>{{ countRPETN }}</td>
+                <td>{{ countBookPETN }}</td>
+                <td>{{ countPatentsETN }}</td>
+            </tr>
+            <tr>
+                <td>Comp. Science</td>
+                <td>{{ countRPCSE }}</td>
+                <td>{{ countBookPCSE }}</td>
+                <td>{{ countPatentsCSE }}</td>
+            </tr>
+            <tr>
+                <td>Info. Technology</td>
+                <td>{{ countRPIT }}</td>
+                <td>{{ countBookPIT }}</td>
+                <td>{{ countPatentsIT }}</td>
+            </tr>
+            <tr style="background-color: #FDDB3A;">
+                <td>Total</td>
+                <td>{{ totalRP }}</td>
+                <td>{{ totalBookP }}</td>
+                <td>{{ totalPatents }}</td>
+            </tr>
+        </table>
+
+        <br>
+
+        <h4 style="color: blue;text-align: left">Details of Research Papers:</h4>
+        <h4 style="color: blue;text-align: left">Electronics Engineering Department</h4>
+
+        <table>
+            <tr style="background-color: #F5A25D;">
+                <th>SN</th>
+                <th>Type of Publication</th>
+                <th>Details of Paper</th>
+                <th>Name of Author</th>
+                <th>Journal/Conference Details</th>
+                <th>Date of Publication</th>
+            </tr>
+            {% for i,j in allResearchPapersETN|zip:SerialNoRSPETN %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.type_of_publication }}</td>
+                    <td>{{ i.details_of_paper }}</td>
+                    <td>{{ i.author_name }}</td>
+                    <td>{{ i.publication_details }}</td>
+                    <td>{{ i.publication_date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">Information Technology Department</h4>
+
+        <table>
+            <tr style="background-color: #F5A25D;">
+                <th>SN</th>
+                <th>Type of Publication</th>
+                <th>Details of Paper</th>
+                <th>Name of Author</th>
+                <th>Journal/Conference Details</th>
+                <th>Date of Publication</th>
+            </tr>
+            {% for i,j in allResearchPapersIT|zip:SerialNoRSPIT %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.type_of_publication }}</td>
+                    <td>{{ i.details_of_paper }}</td>
+                    <td>{{ i.author_name }}</td>
+                    <td>{{ i.publication_details }}</td>
+                    <td>{{ i.publication_date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">CSE Department</h4>
+
+        <table>
+            <tr style="background-color: #F5A25D;">
+                <th>SN</th>
+                <th>Type of Publication</th>
+                <th>Details of Paper</th>
+                <th>Name of Author</th>
+                <th>Journal/Conference Details</th>
+                <th>Date of Publication</th>
+            </tr>
+            {% for i,j in allResearchPapersCSE|zip:SerialNoRSPCSE %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.type_of_publication }}</td>
+                    <td>{{ i.details_of_paper }}</td>
+                    <td>{{ i.author_name }}</td>
+                    <td>{{ i.publication_details }}</td>
+                    <td>{{ i.publication_date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">Mechanical Engineering Department</h4>
+
+        <table>
+            <tr style="background-color: #F5A25D;">
+                <th>SN</th>
+                <th>Type of Publication</th>
+                <th>Details of Paper</th>
+                <th>Name of Author</th>
+                <th>Journal/Conference Details</th>
+                <th>Date of Publication</th>
+            </tr>
+            {% for i,j in allResearchPapersME|zip:SerialNoRSPME %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.type_of_publication }}</td>
+                    <td>{{ i.details_of_paper }}</td>
+                    <td>{{ i.author_name }}</td>
+                    <td>{{ i.publication_details }}</td>
+                    <td>{{ i.publication_date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">Civil Engineering Department</h4>
+
+        <table>
+            <tr style="background-color: #F5A25D;">
+                <th>SN</th>
+                <th>Type of Publication</th>
+                <th>Details of Paper</th>
+                <th>Name of Author</th>
+                <th>Journal/Conference Details</th>
+                <th>Date of Publication</th>
+            </tr>
+            {% for i,j in allResearchPapersCV|zip:SerialNoRSPCV %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.type_of_publication }}</td>
+                    <td>{{ i.details_of_paper }}</td>
+                    <td>{{ i.author_name }}</td>
+                    <td>{{ i.publication_details }}</td>
+                    <td>{{ i.publication_date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">Electrical Engineering Department</h4>
+
+        <table>
+            <tr style="background-color: #F5A25D;">
+                <th>SN</th>
+                <th>Type of Publication</th>
+                <th>Details of Paper</th>
+                <th>Name of Author</th>
+                <th>Journal/Conference Details</th>
+                <th>Date of Publication</th>
+            </tr>
+            {% for i,j in allResearchPapersEL|zip:SerialNoRSPEL %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.type_of_publication }}</td>
+                    <td>{{ i.details_of_paper }}</td>
+                    <td>{{ i.author_name }}</td>
+                    <td>{{ i.publication_details }}</td>
+                    <td>{{ i.publication_date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">Google Scholar Citation Details:</h4>
+
+        <table>
+            <tr style="background-color: #BEDBBB;">
+                <th rowspan="3">Name of Faculty</th>
+                <th rowspan="3">Designation</th>
+                <th colspan="8">Google Scholar</th>
+            </tr>
+            <tr style="background-color: #BEDBBB;">
+                <th colspan="3">2015 Onwards</th>
+                <th colspan="3">All</th>
+                <th colspan="2">No. of Publications</th>
+            </tr>
+            <tr style="background-color: #BEDBBB;">
+                <th>Citations (since 2013)</th>
+                <th>h - Index</th>
+                <th>i - 10 Index</th>
+                <th>Citations</th>
+                <th>h - Index</th>
+                <th>I - 10 Index</th>
+                <th>Cited</th>
+                <th>Reported</th>
+            </tr>
+
+            {% for i in allGoogleCitationETN %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.designation }}</td>
+                    <td>{{ i.citations_2015 }}</td>
+                    <td>{{ i.h_index_2015 }}</td>
+                    <td>{{ i.i_10_2015 }}</td>
+                    <td>{{ i.citations_all }}</td>
+                    <td>{{ i.h_index_all }}</td>
+                    <td>{{ i.i_10_all }}</td>
+                    <td>{{ i.cited_publication }}</td>
+                    <td>{{ i.reported_publication }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allGoogleCitationCV %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.designation }}</td>
+                    <td>{{ i.citations_2015 }}</td>
+                    <td>{{ i.h_index_2015 }}</td>
+                    <td>{{ i.i_10_2015 }}</td>
+                    <td>{{ i.citations_all }}</td>
+                    <td>{{ i.h_index_all }}</td>
+                    <td>{{ i.i_10_all }}</td>
+                    <td>{{ i.cited_publication }}</td>
+                    <td>{{ i.reported_publication }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allGoogleCitationME %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.designation }}</td>
+                    <td>{{ i.citations_2015 }}</td>
+                    <td>{{ i.h_index_2015 }}</td>
+                    <td>{{ i.i_10_2015 }}</td>
+                    <td>{{ i.citations_all }}</td>
+                    <td>{{ i.h_index_all }}</td>
+                    <td>{{ i.i_10_all }}</td>
+                    <td>{{ i.cited_publication }}</td>
+                    <td>{{ i.reported_publication }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allGoogleCitationEL %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.designation }}</td>
+                    <td>{{ i.citations_2015 }}</td>
+                    <td>{{ i.h_index_2015 }}</td>
+                    <td>{{ i.i_10_2015 }}</td>
+                    <td>{{ i.citations_all }}</td>
+                    <td>{{ i.h_index_all }}</td>
+                    <td>{{ i.i_10_all }}</td>
+                    <td>{{ i.cited_publication }}</td>
+                    <td>{{ i.reported_publication }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allGoogleCitationIT %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.designation }}</td>
+                    <td>{{ i.citations_2015 }}</td>
+                    <td>{{ i.h_index_2015 }}</td>
+                    <td>{{ i.i_10_2015 }}</td>
+                    <td>{{ i.citations_all }}</td>
+                    <td>{{ i.h_index_all }}</td>
+                    <td>{{ i.i_10_all }}</td>
+                    <td>{{ i.cited_publication }}</td>
+                    <td>{{ i.reported_publication }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allGoogleCitationCSE %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.designation }}</td>
+                    <td>{{ i.citations_2015 }}</td>
+                    <td>{{ i.h_index_2015 }}</td>
+                    <td>{{ i.i_10_2015 }}</td>
+                    <td>{{ i.citations_all }}</td>
+                    <td>{{ i.h_index_all }}</td>
+                    <td>{{ i.i_10_all }}</td>
+                    <td>{{ i.cited_publication }}</td>
+                    <td>{{ i.reported_publication }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">Ph.D. Details of Regular Degree Faculty</h4>
+
+        <table>
+            <tr style="background-color: #AD6C80;">
+                <th>SN</th>
+                <th>Name of Faculty</th>
+                <th>Department</th>
+                <th>Name of Guide</th>
+                <th>Date of Registration</th>
+                <th>Title of the Thesis</th>
+                <th>Completed On</th>
+            </tr>
+            {% for i,j in allCompletedPHDETN|zip:SerialNoPHDETN %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.department }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.completion_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allCompletedPHDCV|zip:SerialNoPHDCV %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.department }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.completion_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allCompletedPHDME|zip:SerialNoPHDME %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.department }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.completion_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allCompletedPHDEL|zip:SerialNoPHDEL %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.department }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.completion_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allCompletedPHDIT|zip:SerialNoPHDIT %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.department }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.completion_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allCompletedPHDCSE|zip:SerialNoPHDCSE %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.department }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.completion_date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">Regular Degree Faculty Ongoing Ph.D. details</h4>
+
+        <table>
+            <tr style="background-color: #AD6C80;">
+                <th>SN</th>
+                <th>Name of Faculty</th>
+                <th>Department</th>
+                <th>Name of Guide</th>
+                <th>Date of Registration</th>
+                <th>Title of the Thesis</th>
+                <th>Status</th>
+            </tr>
+            {% for i,j in allOngoingPHDETN|zip:SerialNoOngoingPHDETN %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.department }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title }}</td>
+                    <td>Ongoing</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allOngoingPHDCV|zip:SerialNoOngoingPHDCV %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.department }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title }}</td>
+                    <td>Ongoing</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allOngoingPHDME|zip:SerialNoOngoingPHDME %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.department }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title }}</td>
+                    <td>Ongoing</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allOngoingPHDEL|zip:SerialNoOngoingPHDEL %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.department }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title }}</td>
+                    <td>Ongoing</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allOngoingPHDIT|zip:SerialNoOngoingPHDIT %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.department }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title }}</td>
+                    <td>Ongoing</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allOngoingPHDCSE|zip:SerialNoOngoingPHDCSE %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.department }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title }}</td>
+                    <td>Ongoing</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">Books Published by Faculties:</h4>
+
+        <table>
+            <tr style="background-color: #F4C983;">
+                <th>SN</th>
+                <th>Name of Faculty</th>
+                <th>Title of Book</th>
+                <th>Name of Publisher</th>
+                <th>Date of Publication</th>
+            </tr>
+            {% for i,j in allBookPublishedETN|zip:SerialNoBookPublishedETN %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.name_faculty }}</td>
+                    <td>{{ i.title_of_book }}</td>
+                    <td>{{ i.name_of_publisher }}</td>
+                    <td>{{ i.date_publication }}</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allBookPublishedCV|zip:SerialNoBookPublishedCV %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.name_faculty }}</td>
+                    <td>{{ i.title_of_book }}</td>
+                    <td>{{ i.name_of_publisher }}</td>
+                    <td>{{ i.date_publication }}</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allBookPublishedME|zip:SerialNoBookPublishedME %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.name_faculty }}</td>
+                    <td>{{ i.title_of_book }}</td>
+                    <td>{{ i.name_of_publisher }}</td>
+                    <td>{{ i.date_publication }}</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allBookPublishedEL|zip:SerialNoBookPublishedEL %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.name_faculty }}</td>
+                    <td>{{ i.title_of_book }}</td>
+                    <td>{{ i.name_of_publisher }}</td>
+                    <td>{{ i.date_publication }}</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allBookPublishedIT|zip:SerialNoBookPublishedIT %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.name_faculty }}</td>
+                    <td>{{ i.title_of_book }}</td>
+                    <td>{{ i.name_of_publisher }}</td>
+                    <td>{{ i.date_publication }}</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allBookPublishedCSE|zip:SerialNoBookPublishedCSE %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.name_faculty }}</td>
+                    <td>{{ i.title_of_book }}</td>
+                    <td>{{ i.name_of_publisher }}</td>
+                    <td>{{ i.date_publication }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">Ph.D. Student Details registered under WCE faculty (other than QIP-Ph.D. and NDF students)</h4>
+
+        <table>
+            <tr style="background-color: #FCD1D1;">
+                <th>SN</th>
+                <th>Name of Student</th>
+                <th>Name of Guide</th>
+                <th>Date of Registration</th>
+                <th>Title of Course</th>
+                <th>Status: Ongoing / Completed On</th>
+            </tr>
+            {% for i,j in allPhdStudentOtherETN|zip:SerialNoPhdStudentOtherETN %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% for i,j in allPhdStudentOtherCV|zip:SerialNoPhdStudentOtherCV %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% for i,j in allPhdStudentOtherME|zip:SerialNoPhdStudentOtherME %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% for i,j in allPhdStudentOtherEL|zip:SerialNoPhdStudentOtherEL %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% for i,j in allPhdStudentOtherIT|zip:SerialNoPhdStudentOtherIT %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% for i,j in allPhdStudentOtherCSE|zip:SerialNoPhdStudentOtherCSE %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">QIP Ph.D. Details:</h4>
+
+        <table>
+            <tr style="background-color: #FCD1D1;">
+                <th>SN</th>
+                <th>Name of Student</th>
+                <th>Name of Guide</th>
+                <th>Date of Registration</th>
+                <th>Title of Course</th>
+                <th>Status: Ongoing / Completed On</th>
+            </tr>
+            {% for i,j in allPhdStudentQIPETN|zip:SerialNoPhdStudentQIPETN %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% for i,j in allPhdStudentQIPCV|zip:SerialNoPhdStudentQIPCV %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% for i,j in allPhdStudentQIPME|zip:SerialNoPhdStudentQIPME %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% for i,j in allPhdStudentQIPEL|zip:SerialNoPhdStudentQIPEL %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% for i,j in allPhdStudentQIPIT|zip:SerialNoPhdStudentQIPIT %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% for i,j in allPhdStudentQIPCSE|zip:SerialNoPhdStudentQIPCSE %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">NDF Ph.D. Details:</h4>
+
+        <table>
+            <tr style="background-color: #FCD1D1;">
+                <th>SN</th>
+                <th>Name of Student</th>
+                <th>Name of Guide</th>
+                <th>Date of Registration</th>
+                <th>Title of Course</th>
+                <th>Status: Ongoing / Completed On</th>
+            </tr>
+            {% for i,j in allPhdStudentNDFETN|zip:SerialNoPhdStudentNDFETN %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% for i,j in allPhdStudentNDFCV|zip:SerialNoPhdStudentNDFCV %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% for i,j in allPhdStudentNDFME|zip:SerialNoPhdStudentNDFME %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% for i,j in allPhdStudentNDFEL|zip:SerialNoPhdStudentNDFEL %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% for i,j in allPhdStudentNDFIT|zip:SerialNoPhdStudentNDFIT %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% for i,j in allPhdStudentNDFCSE|zip:SerialNoPhdStudentNDFCSE %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.student_name }}</td>
+                    <td>{{ i.guide_name }}</td>
+                    <td>{{ i.registration_date }}</td>
+                    <td>{{ i.title_thesis }}</td>
+                    {% if i.status == True %}
+                        <td>{{ i.completion_date }}</td>
+                    {% else %}
+                        <td>Ongoing</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">IPR and Patents: Granted, Filed and Licensed:</h4>
+        <h4 style="color: blue;text-align: left">Patents Awarded</h4>
+
+        <table>
+            <tr style="background-color: #FFCB91;">
+                <th>Title of Patent</th>
+                <th>Name of Faculty</th>
+                <th>Patent No.</th>
+                <th>Date of Award</th>
+            </tr>
+            {% if allPatentsETN or allPatentsCSE or allPatentsCV or allPatentsEL or allPatentsIT or allPatentsME %}
+                {% for i in allPatentsETN %}
+                    <tr>
+                        <td>{{ i.title }}</td>
+                        <td>{{ i.name_faculty }}</td>
+                        <td>{{ i.patent_no }}</td>
+                        <td>{{ i.date_of_file }}</td>
+                    </tr>
+                {% endfor %}
+                {% for i in allPatentsCV %}
+                    <tr>
+                        <td>{{ i.title }}</td>
+                        <td>{{ i.name_faculty }}</td>
+                        <td>{{ i.patent_no }}</td>
+                        <td>{{ i.date_of_file }}</td>
+                    </tr>
+                {% endfor %}
+                {% for i in allPatentsME %}
+                    <tr>
+                        <td>{{ i.title }}</td>
+                        <td>{{ i.name_faculty }}</td>
+                        <td>{{ i.patent_no }}</td>
+                        <td>{{ i.date_of_file }}</td>
+                    </tr>
+                {% endfor %}
+                {% for i in allPatentsEL %}
+                    <tr>
+                        <td>{{ i.title }}</td>
+                        <td>{{ i.name_faculty }}</td>
+                        <td>{{ i.patent_no }}</td>
+                        <td>{{ i.date_of_file }}</td>
+                    </tr>
+                {% endfor %}
+                {% for i in allPatentsIT %}
+                    <tr>
+                        <td>{{ i.title }}</td>
+                        <td>{{ i.name_faculty }}</td>
+                        <td>{{ i.patent_no }}</td>
+                        <td>{{ i.date_of_file }}</td>
+                    </tr>
+                {% endfor %}
+                {% for i in allPatentsCSE %}
+                    <tr>
+                        <td>{{ i.title }}</td>
+                        <td>{{ i.name_faculty }}</td>
+                        <td>{{ i.patent_no }}</td>
+                        <td>{{ i.date_of_file }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td style="padding: 10px;"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            {% endif %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">Patents Filed</h4>
+
+        <table>
+            <tr style="background-color: #FFCB91;">
+                <th>Title of Patent</th>
+                <th>Name of Faculty</th>
+                <th>Patent No.</th>
+                <th>Date of Award</th>
+            </tr>
+            {% for i in allPatentsNAETN %}
+                <tr>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.name_faculty }}</td>
+                    <td>{{ i.patent_no }}</td>
+                    <td>{{ i.date_of_file }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allPatentsNACV %}
+                <tr>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.name_faculty }}</td>
+                    <td>{{ i.patent_no }}</td>
+                    <td>{{ i.date_of_file }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allPatentsNAME %}
+                <tr>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.name_faculty }}</td>
+                    <td>{{ i.patent_no }}</td>
+                    <td>{{ i.date_of_file }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allPatentsNAEL %}
+                <tr>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.name_faculty }}</td>
+                    <td>{{ i.patent_no }}</td>
+                    <td>{{ i.date_of_file }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allPatentsNAIT %}
+                <tr>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.name_faculty }}</td>
+                    <td>{{ i.patent_no }}</td>
+                    <td>{{ i.date_of_file }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allPatentsNACSE %}
+                <tr>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.name_faculty }}</td>
+                    <td>{{ i.patent_no }}</td>
+                    <td>{{ i.date_of_file }}</td>
+                </tr>
+            {% endfor %}
+
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">Foreign Visits of Faculty:</h4>
+        <h4 style="color: blue;text-align: left">Faculty successfully completing courses from foreign universities:</h4>
+
+        <table>
+            <tr style="background-color: #D8AC9C;">
+                <th>SN</th>
+                <th>Name of Faculty</th>
+                <th>Title of Course</th>
+                <th>Date of Completion</th>
+                <th>Mode</th>
+            </tr>
+            {% for i,j in allFacCompCourseETN|zip:SerialNoFacCompCourseETN %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.title_course }}</td>
+                    <td>{{ i.completion_date }}</td>
+                    <td>{{ i.mode }}</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allFacCompCourseCV|zip:SerialNoFacCompCourseCV %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.title_course }}</td>
+                    <td>{{ i.completion_date }}</td>
+                    <td>{{ i.mode }}</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allFacCompCourseME|zip:SerialNoFacCompCourseME %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.title_course }}</td>
+                    <td>{{ i.completion_date }}</td>
+                    <td>{{ i.mode }}</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allFacCompCourseEL|zip:SerialNoFacCompCourseEL %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.title_course }}</td>
+                    <td>{{ i.completion_date }}</td>
+                    <td>{{ i.mode }}</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allFacCompCourseIT|zip:SerialNoFacCompCourseIT %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.title_course }}</td>
+                    <td>{{ i.completion_date }}</td>
+                    <td>{{ i.mode }}</td>
+                </tr>
+            {% endfor %}
+            {% for i,j in allFacCompCourseCSE|zip:SerialNoFacCompCourseCSE %}
+                <tr>
+                    <td>{{ j }}</td>
+                    <td>{{ i.faculty_name }}</td>
+                    <td>{{ i.title_course }}</td>
+                    <td>{{ i.completion_date }}</td>
+                    <td>{{ i.mode }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">OUTREACH AND INCLUSIVITY</h4>
+        <h4 style="color: blue;text-align: left">FDP/Training Program/Guest Lecture organized by Faculty and Staff:</h4>
+        <h4 style="color: blue;text-align: left">Guest Lecture Organized by Faculty:</h4>
+
+        <table>
+            <tr style="background-color: #BFCBA8;">
+                <th>Name of Faculty</th>
+                <th>Place</th>
+                <th>Subject</th>
+                <th>Date of Lecture</th>
+            </tr>
+
+            {% for i in allGuestLecOrganizedETN %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.place }}</td>
+                    <td>{{ i.subject }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allGuestLecOrganizedCV %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.place }}</td>
+                    <td>{{ i.subject }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allGuestLecOrganizedME %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.place }}</td>
+                    <td>{{ i.subject }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allGuestLecOrganizedEL %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.place }}</td>
+                    <td>{{ i.subject }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allGuestLecOrganizedIT %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.place }}</td>
+                    <td>{{ i.subject }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allGuestLecOrganizedCSE %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.place }}</td>
+                    <td>{{ i.subject }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">Guest Lecture Delivered by Faculty:</h4>
+
+        <table>
+            <tr style="background-color: #EAD3CB;">
+                <th>Name of Faculty</th>
+                <th>Place</th>
+                <th>Subject</th>
+                <th>Date of Lecture</th>
+            </tr>
+
+            {% for i in allGuestLecDeliveredETN %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.place }}</td>
+                    <td>{{ i.subject }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allGuestLecDeliveredCV %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.place }}</td>
+                    <td>{{ i.subject }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allGuestLecDeliveredME %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.place }}</td>
+                    <td>{{ i.subject }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allGuestLecDeliveredEL %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.place }}</td>
+                    <td>{{ i.subject }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allGuestLecDeliveredIT %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.place }}</td>
+                    <td>{{ i.subject }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allGuestLecDeliveredCSE %}
+                <tr>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.place }}</td>
+                    <td>{{ i.subject }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">Activities Conducted:</h4>
+
+        <table>
+            <tr style="background-color: #BDC7C9;">
+                <th>Name of Event</th>
+                <th>Details of Event</th>
+                <th>Name of Event Coordinator</th>
+                <th>Date of Event</th>
+            </tr>
+
+            {% for i in allEventConductedETN %}
+                <tr>
+                    <td>{{ i.nameof_event }}</td>
+                    <td>{{ i.event_details }}</td>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allEventConductedCV %}
+                <tr>
+                    <td>{{ i.nameof_event }}</td>
+                    <td>{{ i.event_details }}</td>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allEventConductedME %}
+                <tr>
+                    <td>{{ i.nameof_event }}</td>
+                    <td>{{ i.event_details }}</td>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allEventConductedEL %}
+                <tr>
+                    <td>{{ i.nameof_event }}</td>
+                    <td>{{ i.event_details }}</td>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allEventConductedIT %}
+                <tr>
+                    <td>{{ i.nameof_event }}</td>
+                    <td>{{ i.event_details }}</td>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            {% for i in allEventConductedCSE %}
+                <tr>
+                    <td>{{ i.nameof_event }}</td>
+                    <td>{{ i.event_details }}</td>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+
+        <h4 style="color: blue;text-align: left">Events Attended by Faculty:</h4>
+
+        <table>
+            <tr style="background-color: #A7BBC7;">
+                <th>Name of Event</th>
+                <th>Details of Event</th>
+                <th>Name of Event Coordinator</th>
+                <th>Date of Event</th>
+            </tr>
+
+            <tr style="background-color: #A7BBC7;">
+                <td colspan="4">Electronics Engineering Department</td>
+            </tr>
+
+            {% for i in allEventAttendedETN %}
+                <tr>
+                    <td>{{ i.nameof_event }}</td>
+                    <td>{{ i.event_details }}</td>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+
+            <tr style="background-color: #A7BBC7;">
+                <td colspan="4">Civil Engineering Department</td>
+            </tr>
+
+            {% for i in allEventAttendedCV %}
+                <tr>
+                    <td>{{ i.nameof_event }}</td>
+                    <td>{{ i.event_details }}</td>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+
+            <tr style="background-color: #A7BBC7;">
+                <td colspan="4">Mechanical Engineering Department</td>
+            </tr>
+
+            {% for i in allEventAttendedME %}
+                <tr>
+                    <td>{{ i.nameof_event }}</td>
+                    <td>{{ i.event_details }}</td>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+
+            <tr style="background-color: #A7BBC7;">
+                <td colspan="4">Electrical Engineering Department</td>
+            </tr>
+
+            {% for i in allEventAttendedEL %}
+                <tr>
+                    <td>{{ i.nameof_event }}</td>
+                    <td>{{ i.event_details }}</td>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+
+            <tr style="background-color: #A7BBC7;">
+                <td colspan="4">Computer Science and Engineering Department</td>
+            </tr>
+
+            {% for i in allEventAttendedCSE %}
+                <tr>
+                    <td>{{ i.nameof_event }}</td>
+                    <td>{{ i.event_details }}</td>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+
+            <tr style="background-color: #A7BBC7;">
+                <td colspan="4">Information Technology Department Department</td>
+            </tr>
+
+            {% for i in allEventAttendedIT %}
+                <tr>
+                    <td>{{ i.nameof_event }}</td>
+                    <td>{{ i.event_details }}</td>
+                    <td>{{ i.teacher_name }}</td>
+                    <td>{{ i.starting_date }} - {{ i.ending_date }}</td>
+                </tr>
+            {% endfor %}
+            
+        </table>
+        <br>
+
+        <h4 style="color: blue; text-align: left">Number of Students from Reservation Categories:</h4>
+        <table>
+            <tr style="background-color: #FFAA71;">
+                <th colspan="14">F.Y.B.Tech {{ fromYear }}-{{ toYear }}, Category- Wise Male, Female Admission DATA</th>
+            </tr>
+            <tr style="background-color: #FFAA71;">
+                <th rowspan="2">Branch</th>
+                <th colspan="2">OPEN</th>
+                <th colspan="2">SC</th>
+                <th colspan="2">ST</th>
+                <th colspan="2">VJNT</th>
+                <th colspan="2">OBC</th>
+                <th colspan="2">SBC</th>
+                <th rowspan="2">Total</th>
+            </tr>
+            <tr style="background-color: #FFAA71;">
+                <th>M</th>
+                <th>F</th>
+                <th>M</th>
+                <th>F</th>
+                <th>M</th>
+                <th>F</th>
+                <th>M</th>
+                <th>F</th>
+                <th>M</th>
+                <th>F</th>
+                <th>M</th>
+                <th>F</th>
+            </tr>
+            <tr>
+                <td>Civil Engineering</td>
+                <td>{{ BTechStudentDataCVOpenMale }}</td>
+                <td>{{ BTechStudentDataCVOpenFemale }}</td>
+                <td>{{ BTechStudentDataCVSCMale }}</td>
+                <td>{{ BTechStudentDataCVSCFemale }}</td>
+                <td>{{ BTechStudentDataCVSTMale }}</td>
+                <td>{{ BTechStudentDataCVSTFemale }}</td>
+                <td>{{ BTechStudentDataCVVJNTMale }}</td>
+                <td>{{ BTechStudentDataCVVJNTFemale }}</td>
+                <td>{{ BTechStudentDataCVOBCMale }}</td>
+                <td>{{ BTechStudentDataCVOBCFemale }}</td>
+                <td>{{ BTechStudentDataCVSBCMale }}</td>
+                <td>{{ BTechStudentDataCVSBCFemale }}</td>
+                <td>{{ BTechStudentDataCVCatMFTotal }}</td>
+            </tr>
+            <tr>
+                <td>Computer Science And Engineering</td>
+                <td>{{ BTechStudentDataCSEOpenMale }}</td>
+                <td>{{ BTechStudentDataCSEOpenFemale }}</td>
+                <td>{{ BTechStudentDataCSESCMale }}</td>
+                <td>{{ BTechStudentDataCSESCFemale }}</td>
+                <td>{{ BTechStudentDataCSESTMale }}</td>
+                <td>{{ BTechStudentDataCSESTFemale }}</td>
+                <td>{{ BTechStudentDataCSEVJNTMale }}</td>
+                <td>{{ BTechStudentDataCSEVJNTFemale }}</td>
+                <td>{{ BTechStudentDataCSEOBCMale }}</td>
+                <td>{{ BTechStudentDataCSEOBCFemale }}</td>
+                <td>{{ BTechStudentDataCSESBCMale }}</td>
+                <td>{{ BTechStudentDataCSESBCFemale }}</td>
+                <td>{{ BTechStudentDataCSECatMFTotal }}</td>
+            </tr>
+            <tr>
+                <td>Information Technology</td>
+                <td>{{ BTechStudentDataITOpenMale }}</td>
+                <td>{{ BTechStudentDataITOpenFemale }}</td>
+                <td>{{ BTechStudentDataITSCMale }}</td>
+                <td>{{ BTechStudentDataITSCFemale }}</td>
+                <td>{{ BTechStudentDataITSTMale }}</td>
+                <td>{{ BTechStudentDataITSTFemale }}</td>
+                <td>{{ BTechStudentDataITVJNTMale }}</td>
+                <td>{{ BTechStudentDataITVJNTFemale }}</td>
+                <td>{{ BTechStudentDataITOBCMale }}</td>
+                <td>{{ BTechStudentDataITOBCFemale }}</td>
+                <td>{{ BTechStudentDataITSBCMale }}</td>
+                <td>{{ BTechStudentDataITSBCFemale }}</td>
+                <td>{{ BTechStudentDataITCatMFTotal }}</td>
+            </tr>
+            <tr>
+                <td>Electrical Engineering</td>
+                <td>{{ BTechStudentDataELOpenMale }}</td>
+                <td>{{ BTechStudentDataELOpenFemale }}</td>
+                <td>{{ BTechStudentDataELSCMale }}</td>
+                <td>{{ BTechStudentDataELSCFemale }}</td>
+                <td>{{ BTechStudentDataELSTMale }}</td>
+                <td>{{ BTechStudentDataELSTFemale }}</td>
+                <td>{{ BTechStudentDataELVJNTMale }}</td>
+                <td>{{ BTechStudentDataELVJNTFemale }}</td>
+                <td>{{ BTechStudentDataELOBCMale }}</td>
+                <td>{{ BTechStudentDataELOBCFemale }}</td>
+                <td>{{ BTechStudentDataELSBCMale }}</td>
+                <td>{{ BTechStudentDataELSBCFemale }}</td>
+                <td>{{ BTechStudentDataELCatMFTotal }}</td>
+            </tr>
+            <tr>
+                <td>Mechanical Engineering</td>
+                <td>{{ BTechStudentDataMEOpenMale }}</td>
+                <td>{{ BTechStudentDataMEOpenFemale }}</td>
+                <td>{{ BTechStudentDataMESCMale }}</td>
+                <td>{{ BTechStudentDataMESCFemale }}</td>
+                <td>{{ BTechStudentDataMESTMale }}</td>
+                <td>{{ BTechStudentDataMESTFemale }}</td>
+                <td>{{ BTechStudentDataMEVJNTMale }}</td>
+                <td>{{ BTechStudentDataMEVJNTFemale }}</td>
+                <td>{{ BTechStudentDataMEOBCMale }}</td>
+                <td>{{ BTechStudentDataMEOBCFemale }}</td>
+                <td>{{ BTechStudentDataMESBCMale }}</td>
+                <td>{{ BTechStudentDataMESBCFemale }}</td>
+                <td>{{ BTechStudentDataMECatMFTotal }}</td>
+            </tr>
+            <tr>
+                <td>Electronics Engineering</td>
+                <td>{{ BTechStudentDataETNOpenMale }}</td>
+                <td>{{ BTechStudentDataETNOpenFemale }}</td>
+                <td>{{ BTechStudentDataETNSCMale }}</td>
+                <td>{{ BTechStudentDataETNSCFemale }}</td>
+                <td>{{ BTechStudentDataETNSTMale }}</td>
+                <td>{{ BTechStudentDataETNSTFemale }}</td>
+                <td>{{ BTechStudentDataETNVJNTMale }}</td>
+                <td>{{ BTechStudentDataETNVJNTFemale }}</td>
+                <td>{{ BTechStudentDataETNOBCMale }}</td>
+                <td>{{ BTechStudentDataETNOBCFemale }}</td>
+                <td>{{ BTechStudentDataETNSBCMale }}</td>
+                <td>{{ BTechStudentDataETNSBCFemale }}</td>
+                <td>{{ BTechStudentDataETNCatMFTotal }}</td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td>{{ BTechStudentDataOpenMaleTotal }}</td>
+                <td>{{ BTechStudentDataOpenFemaleTotal }}</td>
+                <td>{{ BTechStudentDataSCMaleTotal }}</td>
+                <td>{{ BTechStudentDataSCFemaleTotal }}</td>
+                <td>{{ BTechStudentDataSTMaleTotal }}</td>
+                <td>{{ BTechStudentDataSTFemaleTotal }}</td>
+                <td>{{ BTechStudentDataVJNTMaleTotal }}</td>
+                <td>{{ BTechStudentDataVJNTFemaleTotal }}</td>
+                <td>{{ BTechStudentDataOBCMaleTotal }}</td>
+                <td>{{ BTechStudentDataOBCFemaleTotal }}</td>
+                <td>{{ BTechStudentDataSBCMaleTotal }}</td>
+                <td>{{ BTechStudentDataSBCFemaleTotal }}</td>
+                <td>{{ BTechStudentDataFinalCatMFTotal }}</td>
+            </tr>
+        </table>
+        <br>
+
+    </div>
+
+    <div class="form-group"  style="text-align: center">
+        <div class="col-sm-10">
+            <a href="../../GeneratePdf/{{ fromYear }}/{{ toYear }}" target="_blank"><button type="button" class="btn btn-primary">Download Report PDF File</button></a>
+        </div>
+    </div>
+    <br>
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Add Student's PHD Detail
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+    <h1>Add Student's PHD Detail</h1>
+    <br>
+    <!--Add-Students Details-->
+    <form class="form-horizontal"  role="form" action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="student_name">
+                Student Name:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="student_name" type="text" name="student_name" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="startDate" >
+                Registration Date:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="startDate" type="date" name="registration_date" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="title_thesis">
+                Title of Thesis:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="title_thesis" type="text" name="title_thesis" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="guide_name">
+                Guide Name:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="guide_name" type="text" name="guide_name" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="comment_on_thesis">
+                Remark:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="comment_on_thesis" type="text" name="comment_on_thesis">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="status">
+                Status:
+            </label>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" id="status" value="Completed" onclick="enable()" required>
+                    <label class="form-check-label" for="status">
+                        Completed
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" id="status" value="Pursuing" onclick="disable()">
+                    <label class="form-check-label" for="status">
+                        Pursuing
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" id="comp_date" hidden>
+            <label class="control-label col-sm-2" for="endDate">
+                Completion Date:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="endDate" type="date" name="completion_date">
+            </div>
+        </div>
+
+        <!--# students PHD type-->
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="type_of_phd">
+                Type of PHD:
+            </label>
+            <div class="col-sm-10">
+                <select class="form-select" id="type_of_phd" name="type_of_phd" required>
+                    <option value="QIP">QIP</option>
+                    <option value="NDF">NDF</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+
+
+        <!--end-->
+        <div class="form-group">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </form>
+    <br>
+    <script>
+        function disable() {
+            document.getElementById("comp_date").hidden = true;
+        }
+        function enable() {
+            document.getElementById("comp_date").hidden = false;
+        }
+    </script>
+    <script src="{% static '/js/DateValidation.js' %}"></script>
+{% endblock %}

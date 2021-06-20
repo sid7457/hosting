@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Research Papers
+{% endblock %}
+
+{% block content %}
+    <h1>Research Papers</h1>
+    <br>
+    <!--Add a Paper-->
+    <br>
+    <a class="btn btn-info" href="addResearchPapers" role="button">Add Research Paper</a>
+    <br><br><br>
+
+    {% for j in allResearchPaper %}
+        {% for i in j %}
+            <div class="card text-center" style="width: 60%; margin: auto">
+                <div class="card-header">
+                    Title:  {{ i.type_of_publication }}
+                </div>
+                <div class="card-body">
+                    <p class="card-title">DOI: {{ i.doi }}</p>
+                    <p class="card-title">Details of Paper: {{ i.details_of_paper }}</p>
+                    <p class="card-title">Author Name: {{ i.author_name }}</p>
+                    <p class="card-title">Publication Date: {{ i.publication_date }}</p>
+                    <p class="card-title">Department: {{ i.department }}</p>
+                    <p class="card-title">Area of Research: {{ i.area_of_research }}</p>
+                    <p class="card-title">Journal or Publication Details: {{ i.publication_details }}</p>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#popUpModal{{ i.doi }}">
+                        Delete
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="popUpModal{{ i.doi }}" tabindex="-1" role="dialog" aria-labelledby="popUpModalTitle" aria-hidden="true">
+                <div class=" modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="popUpModalTitle">Delete Confirmation</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h6>Are you sure, you want to delete.</h6>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="researchPapers"><button type="button" class="btn btn-secondary" >No, thanks</button></a>
+                            <a href="researchPaperDelete/{{i.doi}}"><button type="button" class="btn btn-danger" >Delete</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+    {% endfor %}
+
+{% endblock %}

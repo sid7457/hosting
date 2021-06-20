@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+
+    <title>
+        {% block title %}
+        {% endblock %}
+
+    </title>
+
+    {#    Bootstrap CSS#}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footerStyle.css' %}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <span class="navbar-brand mb-0 h1">WCE</span>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+        <ul class="navbar-nav ml-auto">
+
+            {% if user.is_authenticated %}
+                <li class="nav-item active">
+                    <a class="nav-link">Hello, {{user.first_name}}</a>
+                </li>
+                {% if isAdmin %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/adminApp/adminHome">Home</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'adminApp:generateReport' %}">Generate Report</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+
+                {% else %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="teacherHome">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="teacherProfile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                {% endif %}
+
+            {% else %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    {% block content %}
+
+    {% endblock %}
+</div>
+
+<!-- Footer -->
+<footer id="footer">
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+        <!-- Grid row -->
+        <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+                <!-- Content -->
+                <h5 class="font-weight-bold text-uppercase mb-4">Address</h5>
+                <p>Walchand College of Engineering,<br>
+                    A/P: Vishrambagh,<br>
+                    Sangli - 416 415<br>
+                    Maharashtra, India<br>
+                    Tel: +91-233-2300383<br>
+                    Fax: +91-233-2300831<br>
+                    <a href="mailto:kiran.raut@walchandsangli.ac.in">Contact Us</a>
+                </p>
+            </div>
+            <!-- Grid column -->
+            <hr class="clearfix w-100 d-md-none">
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mb-4">About</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <p>
+                            <a href="http://www.walchandsangli.ac.in">About WCE Sangli</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="http://112.133.242.241/moodle/">WCE Moodle</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="https://alumni.walchandsangli.ac.in/">Alumni Portal</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="https://walchandsangli.edugrievance.com/">Grievance Portal</a>
+                        </p>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+            <hr class="clearfix w-100 d-md-none">
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+                <!-- Contact details -->
+                <h5 class="font-weight-bold text-uppercase mb-4">External Links</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <p>
+                            <a href="https://www.aicte-india.org/">AICTE</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="https://www.ugc.ac.in/">UGC</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="https://www.nbaind.org/">NBA</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="http://www.dtemaharashtra.gov.in/index.html">DTE</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="http://www.unishivaji.ac.in/">Shivaji University</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <a href="https://www.nirfindia.org/Home">NIRF</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <!-- Grid column -->
+            <hr class="clearfix w-100 d-md-none">
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+                <!-- Social buttons -->
+                <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
+                <!-- Facebook -->
+                <a href="" type="button" class="btn-floating btn-fb">
+                    <i class="fa fa-facebook-f"></i>
+                </a>
+                <!-- Twitter -->
+                <a href="" type="button" class="btn-floating btn-tw">
+                    <p><i class="fa fa-twitter"></i></p>
+                </a>
+                <!-- Google +-->
+                <a href="" type="button" class="btn-floating btn-gplus">
+                    <p><i class="fa fa-google-plus-g"></i></p>
+                </a>
+                <!-- Dribbble -->
+                <a href="" type="button" class="btn-floating btn-dribbble">
+                    <p><i class="fa fa-dribbble"></i></p>
+                </a>
+            </div>
+            <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+    </div>
+    <!-- Footer Links -->
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

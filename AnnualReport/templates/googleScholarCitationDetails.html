@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Google Scholar Citation Detail
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+    <h1>Google Scholar Citation Detail</h1>
+    <br>
+    <a class="btn btn-info" href="addGoogleScholarCitationDetails" role="button">Add Teacher Google Citation Detail</a>
+    <br><br><br>
+    {% for i in googleAllCitationDetails %}
+        <div class="card text-center" style="width: 60%; margin: auto">
+            <div class="card-header">
+                Citation Details:   {{ i.academic_year }}
+            </div>
+            <div class="card-body">
+                <p class="card-title">Teacher Name: {{ i.teacher_name }}</p>
+                <p class="card-title">Designation: {{ i.designation }}</p>
+                <p class="card-title">Citations 2015: {{ i.citations_2015 }}</p>
+                <p class="card-title">h-index 2015: {{ i.h_index_2015 }}</p>
+                <p class="card-title">i-10 in 2015: {{ i.i_10_2015 }}</p>
+                <p class="card-title">Citations All: {{ i.citations_all }}</p>
+                <p class="card-title">h-index All: {{ i.h_index_all }}</p>
+                <p class="card-title">i-10 All: {{ i.i_10_all }}</p>
+                <p class="card-title">Cited Publication: {{ i.cited_publication }}</p>
+                <p class="card-title">Reported Publication: {{ i.reported_publication }}</p>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#popUpModal{{ i.id }}">
+                    Delete
+                </button>
+            </div>
+
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="popUpModal{{ i.id }}" tabindex="-1" role="dialog" aria-labelledby="popUpModalTitle" aria-hidden="true">
+            <div class=" modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="popUpModalTitle">Delete Confirmation</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Are you sure, you want to delete.</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="googleScholarCitationDetails"><button type="button" class="btn btn-secondary" >No, thanks</button></a>
+                        <a href="googleScholarCitationDetailsDelete/{{i.id}}"><button type="button" class="btn btn-danger" >Delete</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+    {% endfor %}
+{% endblock %}

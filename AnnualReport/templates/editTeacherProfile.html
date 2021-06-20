@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Edit Teacher Profile
+{% endblock %}
+
+{% block content %}
+    <h1>Edit Teacher Profile</h1>
+    <br>
+
+    <form class="form-horizontal"  role="form" action="editTeacherProfile" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="first_name">
+                First Name:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="first_name" type="text" name="first_name" value="{{ user.first_name }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="last_name">
+                Last Name:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="last_name" type="text" name="last_name" value="{{ user.last_name }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="age">
+                Age:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="age" type="number" name="age" value="{{ teacherData.age }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="permanent_address">
+                Permanent Address:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="permanent_address" type="text" name="permanent_address" value="{{ teacherData.address1_permanent }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="correspondence_address">
+                Correspondence Address:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="correspondence_address" type="text" name="correspondence_address" value="{{ teacherData.address2_optional }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="college_post">
+                College Post:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="college_post" type="text" name="college_post" value="{{ teacherData.college_post }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="teaching_type">
+                Teaching Type:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="teaching_type" type="text" name="teaching_type" value="{{ teacherData.teaching_type }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="regular_contractual">
+                Regular or Contractual:
+            </label>
+            <div class="col-sm-10">
+                <select class="form-select" id="regular_contractual" name="regular_contractual">
+                    <option value="Regular">Regular</option>
+                    <option value="Contractual">Contractual</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="department">
+                Department:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="department" type="text" name="department" value="{{ teacherData.department }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="higher_education">
+                Higher Education:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="higher_education" type="text" name="higher_education" value="{{ teacherData.higher_education }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="gate_score">
+                Gate Score:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="gate_score" type="number" name="gate_score" value="{{ teacherData.gate_score }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="cat_score">
+                CAT Score:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="cat_score" type="number" name="cat_score" value="{{ teacherData.cat_score }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="gre_score">
+                GRE Score:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="gre_score" type="number" name="gre_score" value="{{ teacherData.gre_score }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">Save</button>
+                <a href="teacherProfile"><button type="button" class="btn btn-success">Cancel</button></a>
+            </div>
+        </div>
+
+    </form>
+    <br>
+
+{% endblock %}

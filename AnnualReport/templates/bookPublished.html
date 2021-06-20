@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Published Books
+{% endblock %}
+
+{% block content %}
+
+    <h1>Published Books</h1>
+    <br>
+    <br>
+    <a class="btn btn-info" href="addBookPublished" role="button">Add Book Published</a>
+    <br><br><br>
+    {% for i in allPublishedBooks %}
+        <div class="card text-center" style="width: 60%; margin: auto">
+            <div class="card-header">
+                Title of Book:  {{ i.title_of_book }}
+            </div>
+            <div class="card-body">
+                <p class="card-title">Faculty Name: {{ i.name_faculty }}</p>
+                <p class="card-title">Name of Publisher: {{ i.name_of_publisher }}</p>
+                <p class="card-title">Publication Date: {{ i.date_publication }}</p>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#popUpModal{{ i.id }}">
+                    Delete
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="popUpModal{{ i.id }}" tabindex="-1" role="dialog" aria-labelledby="popUpModalTitle" aria-hidden="true">
+            <div class=" modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="popUpModalTitle">Delete Confirmation</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Are you sure, you want to delete.</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="bookPublished"><button type="button" class="btn btn-secondary" >No, thanks</button></a>
+                        <a href="bookPublishedDelete/{{i.id}}"><button type="button" class="btn btn-danger" >Delete</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+
+{% endblock %}

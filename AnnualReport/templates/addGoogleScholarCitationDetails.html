@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Add Google Scholar Citation Details
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+    <h1>Add Google Scholar Citation Details</h1>
+    <br>
+    <form class="form-horizontal"  role="form" action="addGoogleScholarCitationDetails" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="teacher_name">
+                Teacher Name:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="teacher_name" type="text" name="teacher_name" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="designation">
+                Designation:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="designation" type="text" name="designation" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="citations_2015">
+                Citations Onwards 2015:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="citations_2015" type="number" name="citations_2015" required>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="h_index_2015">
+                h-index Onwards 2015:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="h_index_2015" type="number" name="h_index_2015" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="i_10_2015">
+                i-10 Onwards 2015:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="i_10_2015" type="number" name="i_10_2015" required>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="citations_all">
+                Citations in All:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="citations_all" type="number" name="citations_all" required>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="h_index_all">
+                h-index in All:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="h_index_all" type="number" name="h_index_all" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="i_10_all">
+                i-10 in All:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="i_10_all" type="number" name="i_10_all" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="cited_publication">
+                Cited Publication:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="cited_publication" type="number" name="cited_publication" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="reported_publication">
+                Reported Publication:
+            </label>
+            <div class="col-sm-10">
+                <input class="form-control" id="reported_publication" type="number" name="reported_publication" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label class="control-label" for="ddlYears">
+                    Academic Year:
+                </label>
+                <select name="academic_year" id="ddlYears"></select>
+                -
+                <select name="toYear" id="ddlYears2"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+
+
+    </form>
+    <br>
+
+    {% for message in messages %}
+        <script>alert("{{ message }}")</script>
+    {% endfor %}
+    <script src="{% static '/js/year.js' %}"></script>
+    <script src="{% static '/js/year2.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,14 @@
+body {
+    min-height: 90vh;
+    position: relative;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+footer {
+    background: #AFB9C8;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: auto;
+}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Teacher Profile
+{% endblock %}
+
+
+
+{% block content %}
+    <style>
+        strong {
+            font-size: 20px;
+        }
+    </style>
+    <h1>Teacher Profile</h1>
+    <br>
+    <br>
+    <div class="card" style="width: 60%; margin: auto">
+        <div class="card-body">
+            <p><strong>Name:</strong> <input class="form-control" value="{{ user.first_name }} {{ user.last_name }}" disabled></p>
+            <p><strong>Email:</strong> <input class="form-control"   value="{{ user.email }}" disabled></p>
+            <p><strong>Age:</strong> <input class="form-control"   value="{{ teacherData.age }}" disabled></p>
+            <p><strong>Permanent Address:</strong> <input class="form-control" value="{{ teacherData.address1_permanent }}" disabled></p>
+            <p><strong>Correspondence Address:</strong> <input class="form-control" value="{{ teacherData.address2_optional }}" disabled></p>
+            <p><strong>College Post:</strong> <input class="form-control" value="{{ teacherData.college_post }}" disabled></p>
+            <p><strong>Teaching Type:</strong> <input class="form-control" value="{{ teacherData.teaching_type }}" disabled></p>
+            {% if teacherData.regular_contractual == True %}
+                <p><strong>Regular or Contractual:</strong> <input class="form-control" value="Regular" disabled></p>
+            {% elif teacherData.regular_contractual == False %}
+                <p><strong>Regular or Contractual:</strong> <input class="form-control" value="Contractual" disabled></p>
+            {% else %}
+                <p><strong>Regular or Contractual:</strong> <input class="form-control" value="" disabled></p>
+            {% endif %}
+            <p><strong>Department:</strong> <input class="form-control" value="{{ teacherData.department }}" disabled></p>
+            <p><strong>Higher Education:</strong> <input class="form-control" value="{{ teacherData.higher_education }}" disabled></p>
+            <p><strong>Gate Score:</strong> <input class="form-control" value="{{ teacherData.gate_score }}" disabled></p>
+            <p><strong>CAT Score:</strong> <input class="form-control" value="{{ teacherData.cat_score }}" disabled></p>
+            <p><strong>GRE Score:</strong> <input class="form-control" value="{{ teacherData.gre_score }}" disabled></p>
+
+            <br>
+            <div class="text-center">
+                <a class="btn btn-warning" href="editTeacherProfile" role="button">Edit Profile</a>
+                <a class="btn btn-warning" href="changePassword" role="button">Change Password</a>
+            </div>
+
+        </div>
+    </div>
+    <br>
+{% endblock %}
